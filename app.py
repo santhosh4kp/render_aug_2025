@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 
 # Load the trained model
-model_path = r"C:\Users\santhosh\Desktop\Machine Learning\Poly_tech_aug_2025\image_classifier.pkl"
+model_path = r"models/image_classifier.pkl"
 with open(model_path, "rb") as f:
     model = pickle.load(f)
 
