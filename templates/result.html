@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        .result-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        .lemon-icon {
+            color: #ffd700;
+        }
+        .melon-icon {
+            color: #ff6b35;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .prediction {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .confidence {
+            font-size: 1.1em;
+            color: #666;
+            margin: 15px 0;
+        }
+        .back-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .description {
+            margin: 20px 0;
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="result-icon {% if label == 'Lemon' %}lemon-icon{% else %}melon-icon{% endif %}">
+            {% if label == 'Lemon' %}🍋{% else %}🍈{% endif %}
+        </div>
+        <h1>Classification Result</h1>
+        <div class="prediction">
+            {{ label }}
+        </div>
+        <div class="description">
+            {% if label == 'Lemon' %}
+                The image has been classified as a <strong>Lemon</strong>! 🍋
+                <br>Lemons are citrus fruits known for their sour taste and high vitamin C content.
+            {% else %}
+                The image has been classified as a <strong>Melon</strong>! 🍈
+                <br>Melons are sweet fruits that belong to the gourd family.
+            {% endif %}
+        </div>
+        <a href="{{ url_for('index') }}" class="back-btn">Try Another Image</a>
+    </div>
+</body>
+</html> 
